@@ -20,7 +20,7 @@ type Customer struct {
 	UpdatedAt    time.Time
 }
 
-type CustomerCreateRules struct { // Used in create context.
+type CreateCustomerRequest struct { // Used in create context.
 	NIK          string    `validate:"required,max=255"`
 	FullName     string    `validate:"required,max=255"`
 	LegalName    string    `validate:"required,max=255"`

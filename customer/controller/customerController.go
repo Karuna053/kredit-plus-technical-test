@@ -11,11 +11,12 @@ import (
 )
 
 func CreateCustomer(c *gin.Context) {
-	var DB *gorm.DB
-	var customer domain.Customer
+	var DB *gorm.DB // repository
+
+	var req domain.CreateCustomerRequest
 
 	// Parse JSON request and populate Customer struct
-	err := c.ShouldBindJSON(&customer)
+	err := c.ShouldBindJSON(&req)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status": "fail",
@@ -24,19 +25,8 @@ func CreateCustomer(c *gin.Context) {
 		return
 	}
 
-	// Validare request on create customer context
-	var CustomerCreateRules domain.CustomerCreateRules
-	CustomerCreateRules.NIK = customer.NIK
-	CustomerCreateRules.FullName = customer.FullName
-	CustomerCreateRules.LegalName = customer.LegalName
-	CustomerCreateRules.TempatLahir = customer.TempatLahir
-	CustomerCreateRules.TanggalLahir = customer.TanggalLahir
-	CustomerCreateRules.Gaji = customer.Gaji
-	CustomerCreateRules.FotoKTP = customer.FotoKTP
-	CustomerCreateRules.FotoSelfie = customer.FotoSelfie
-
 	validate := validator.New()
-	err = validate.Struct(CustomerCreateRules)
+	err = validate.Struct(req)
 	fmt.Println(err) // Logging error on console... just because.
 
 	if err != nil {
@@ -56,14 +46,14 @@ func CreateCustomer(c *gin.Context) {
 
 	// Create customer.
 	customerInput := domain.Customer{
-		NIK:          customer.NIK,
-		FullName:     customer.FullName,
-		LegalName:    customer.LegalName,
-		TempatLahir:  customer.TempatLahir,
-		TanggalLahir: customer.TanggalLahir,
-		Gaji:         customer.Gaji,
-		FotoKTP:      customer.FotoKTP,
-		FotoSelfie:   customer.FotoSelfie,
+		NIK:          req.NIK,
+		FullName:     req.FullName,
+		LegalName:    req.LegalName,
+		TempatLahir:  req.TempatLahir,
+		TanggalLahir: req.TanggalLahir,
+		Gaji:         req.Gaji,
+		FotoKTP:      req.FotoKTP,
+		FotoSelfie:   req.FotoSelfie,
 	}
 
 	err = DB.Create(&customerInput).Error
