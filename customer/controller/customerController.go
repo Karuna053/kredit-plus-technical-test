@@ -10,10 +10,23 @@ import (
 	"gorm.io/gorm"
 )
 
-func CreateCustomer(c *gin.Context) {
-	var DB *gorm.DB // repository
+type CustomerHandler struct {
+	// gin *gin.Engine
+}
 
-	var req domain.CreateCustomerRequest
+func NewCustomerHandler(g *gin.Engine) {
+	handler := &CustomerHandler{}
+
+	routes := g.Group("/api/customer")
+	{
+		// Customer
+		routes.POST("/create", handler.CreateCustomer)
+	}
+}
+
+func (h CustomerHandler) CreateCustomer(c *gin.Context) {
+	var DB *gorm.DB
+	var customer domain.Customer
 
 	// Parse JSON request and populate Customer struct
 	err := c.ShouldBindJSON(&req)

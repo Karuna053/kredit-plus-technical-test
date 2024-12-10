@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	customerRoutes "kredit-plus/customer/route"
+	"kredit-plus/customer/controller"
 	"kredit-plus/domain"
 
 	"github.com/gin-gonic/gin"
@@ -48,7 +48,9 @@ func main() {
 
 	// Run Gin.
 	server := gin.Default()
-	customerRoutes.SetRoutes(server)
+
+	controller.NewCustomerHandler(server)
+	// customerRoutes.SetRoutes(server)
 
 	server.Run(":8080")
 }
