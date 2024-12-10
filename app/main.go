@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
+	customerRoutes "kredit-plus/customer/route"
 	"kredit-plus/domain"
 
+	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
-
-var DB *gorm.DB
 
 func init() {
 	viper.SetConfigFile(`config.json`)
@@ -21,6 +21,8 @@ func init() {
 }
 
 func main() {
+	// Start database connection.
+	var DB *gorm.DB
 	dbHost := viper.GetString(`database.host`)
 	dbUser := viper.GetString(`database.user`)
 	dbPass := viper.GetString(`database.password`)
@@ -43,4 +45,10 @@ func main() {
 		&domain.CustomerTenor{},
 		&domain.Transaction{},
 	)
+
+	// Run Gin.
+	server := gin.Default()
+	customerRoutes.SetRoutes(server)
+
+	server.Run(":8080")
 }
