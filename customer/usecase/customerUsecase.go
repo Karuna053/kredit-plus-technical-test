@@ -3,7 +3,6 @@ package usecase
 import (
 	"context"
 	"kredit-plus/domain"
-	"time"
 )
 
 type customerUsecase struct {
@@ -17,19 +16,13 @@ func NewCustomerUsecase(customerRepo domain.CustomerRepository) domain.CustomerU
 }
 
 func (usecase *customerUsecase) Create(context context.Context, reqBody *domain.CustomerCreateRequest) (*domain.Customer, error) {
-	parsedBirthday, err := time.Parse("2006-01-02", reqBody.TanggalLahir)
-	if err != nil {
-		// Return an error if the date format is incorrect
-		return nil, err
-	}
-
 	// Build Customer struct.
 	customerInput := domain.Customer{
 		NIK:          reqBody.NIK,
 		FullName:     reqBody.FullName,
 		LegalName:    reqBody.LegalName,
 		TempatLahir:  reqBody.TempatLahir,
-		TanggalLahir: parsedBirthday,
+		TanggalLahir: reqBody.TanggalLahir,
 		Gaji:         reqBody.Gaji,
 		FotoKTP:      reqBody.FotoKTP,
 		FotoSelfie:   reqBody.FotoSelfie,

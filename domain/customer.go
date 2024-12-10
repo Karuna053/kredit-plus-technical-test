@@ -31,25 +31,25 @@ type CustomerRepository interface {
 
 // Validation rules for Customer Create
 type CustomerCreateRequest struct {
-	NIK          string  `json:"NIK" validate:"required,max=255"`
-	FullName     string  `json:"FullName" validate:"required,max=255"`
-	LegalName    string  `json:"LegalName" validate:"required,max=255"`
-	TempatLahir  string  `json:"TempatLahir" validate:"required,max=255"`
-	TanggalLahir string  `json:"TanggalLahir" validate:"required"`
-	Gaji         float32 `json:"Gaji" validate:"required,max=1000000000"`
-	FotoKTP      string  `json:"FotoKTP" validate:"required,max=2000"`
-	FotoSelfie   string  `json:"FotoSelfie" validate:"required,max=2000"`
+	NIK          string    `json:"NIK" validate:"required,max=255"`
+	FullName     string    `json:"FullName" validate:"required,max=255"`
+	LegalName    string    `json:"LegalName" validate:"required,max=255"`
+	TempatLahir  string    `json:"TempatLahir" validate:"required,max=255"`
+	TanggalLahir time.Time `json:"TanggalLahir" validate:"required"`
+	Gaji         float32   `json:"Gaji" validate:"required,max=1000000000"`
+	FotoKTP      string    `json:"FotoKTP" validate:"required,max=2000"`
+	FotoSelfie   string    `json:"FotoSelfie" validate:"required,max=2000"`
 }
 
 // Validation rules for Customer Update
 type CustomerUpdateRequest struct {
-	ID           uint    `json:"ID" validate:"required"`
-	NIK          string  `json:"NIK" validate:"required,max=255"`
-	FullName     string  `json:"FullName" validate:"required,max=255"`
-	LegalName    string  `json:"LegalName" validate:"required,max=255"`
-	TempatLahir  string  `json:"TempatLahir" validate:"required,max=255"`
-	TanggalLahir string  `json:"TanggalLahir" validate:"required"`
-	Gaji         float32 `json:"Gaji" validate:"required,min=0,max=1000000000"`
-	FotoKTP      string  `json:"FotoKTP" validate:"required,max=2000"`
-	FotoSelfie   string  `json:"FotoSelfie" validate:"required,max=2000"`
+	ID           uint      `json:"ID" validate:"required"`
+	NIK          string    `json:"NIK" validate:"required,max=255"`
+	FullName     string    `json:"FullName" validate:"required,max=255"`
+	LegalName    string    `json:"LegalName" validate:"required,max=255"`
+	TempatLahir  string    `json:"TempatLahir" validate:"required,max=255"`
+	TanggalLahir time.Time `json:"TanggalLahir" validate:"required"`
+	Gaji         float32   `json:"Gaji" validate:"required,min=0,max=1000000000"`
+	FotoKTP      string    `json:"FotoKTP" validate:"required,max=2000"`
+	FotoSelfie   string    `json:"FotoSelfie" validate:"required,max=2000"`
 }
