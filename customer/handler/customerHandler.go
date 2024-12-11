@@ -13,8 +13,10 @@ type CustomerHandler struct {
 	Usecase domain.CustomerUsecase
 }
 
-func NewCustomerHandler(ginEngine *gin.Engine) {
-	handler := &CustomerHandler{}
+func NewCustomerHandler(ginEngine *gin.Engine, us domain.CustomerUsecase) {
+	handler := &CustomerHandler{
+		Usecase: us,
+	}
 
 	routes := ginEngine.Group("/api/customer")
 	{

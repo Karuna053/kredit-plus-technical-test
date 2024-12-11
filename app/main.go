@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	customerHandler "kredit-plus/customer/handler"
+	customerRepo "kredit-plus/customer/repository"
+	customerUsecase "kredit-plus/customer/usecase"
 	"kredit-plus/domain"
 
 	"github.com/gin-gonic/gin"
@@ -48,8 +50,10 @@ func main() {
 
 	// Run Gin.
 	server := gin.Default()
-	customerHandler.NewCustomerHandler(server)
-	// customerRoutes.SetRoutes(server)
+
+	repo := customerRepo.NewCustomerRepository(DB)
+	uc := customerUsecase.NewCustomerUsecase(repo)
+	customerHandler.NewCustomerHandler(server, uc)
 
 	server.Run(":8080")
 }
