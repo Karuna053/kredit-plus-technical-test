@@ -171,6 +171,10 @@ func (handler *CustomerTenorHandler) Delete(ginContext *gin.Context) {
 	// Pass to Usecase.
 	ctx := ginContext.Request.Context()
 	err = handler.Usecase.Delete(ctx, customerTenorID)
+	if err != nil {
+		ginContext.JSON(http.StatusBadRequest, gin.H{"status": "fail", "error": err.Error()})
+		return
+	}
 
 	// Return success response.
 	ginContext.JSON(http.StatusOK, gin.H{

@@ -12,6 +12,10 @@ import (
 	customerTenorRepo "kredit-plus/customer_tenor/repository"
 	customerTenorUsecase "kredit-plus/customer_tenor/usecase"
 
+	transactionHandler "kredit-plus/transaction/handler"
+	transactionRepo "kredit-plus/transaction/repository"
+	transactionUsecase "kredit-plus/transaction/usecase"
+
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
@@ -65,6 +69,11 @@ func main() {
 	ctRepo := customerTenorRepo.NewCustomerTenorRepository(DB)
 	ctUsecase := customerTenorUsecase.NewCustomerTenorUsecase(ctRepo, cRepo)
 	customerTenorHandler.NewCustomerTenorHandler(server, ctUsecase)
+
+	// Setup transactionHandler.
+	tRepo := transactionRepo.NewTransactionRepository(DB)
+	tUsecase := transactionUsecase.NewTransactionUsecase(tRepo)
+	transactionHandler.NewTransactionHandler(server, tUsecase)
 
 	server.Run(":8080")
 }
