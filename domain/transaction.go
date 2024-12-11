@@ -22,16 +22,16 @@ type Transaction struct {
 
 type TransactionUsecase interface {
 	Create(ctx context.Context, reqBody *TransactionCreateRequest) (*Transaction, error)
-	// Update(ctx context.Context, reqBody *TransactionUpdateRequest, transactionID uint) (*Transaction, error)
-	// FetchByID(ctx context.Context, transactionID uint) (Customer, error)
-	// FetchAll(ctx context.Context) ([]Transaction, error)
+	Update(ctx context.Context, reqBody *TransactionUpdateRequest, transactionID uint) (*Transaction, error)
+	FetchByID(ctx context.Context, transactionID uint) (Transaction, error)
+	FetchAll(ctx context.Context) ([]Transaction, error)
 }
 
 type TransactionRepository interface {
 	Create(ctx context.Context, transactionInput *Transaction) (*Transaction, error)
-	// Update(ctx context.Context, transactionInput *Transaction) (*Transaction, error)
-	// FetchByID(ctx context.Context, transactionID uint) (Transaction, error)
-	// FetchAll(ctx context.Context) ([]Customer, error)
+	Update(ctx context.Context, transactionInput *Transaction) (*Transaction, error)
+	FetchByID(ctx context.Context, transactionID uint) (Transaction, error)
+	FetchAll(ctx context.Context) ([]Transaction, error)
 }
 
 // Validation rules for Transaction Create
