@@ -43,3 +43,14 @@ func (repo *customerRepository) FetchByID(ctx context.Context, customerID uint) 
 
 	return customer, nil
 }
+
+func (repo *customerRepository) FetchAll(ctx context.Context) ([]domain.Customer, error) {
+	var customers []domain.Customer
+
+	err := repo.DB.Find(&customers).Error
+	if err != nil {
+		return []domain.Customer{}, err
+	}
+
+	return customers, nil
+}

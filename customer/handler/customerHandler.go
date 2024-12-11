@@ -21,6 +21,8 @@ func NewCustomerHandler(ginEngine *gin.Engine, us domain.CustomerUsecase) {
 
 	routes := ginEngine.Group("/api/customer")
 	{
+		routes.GET("/", handler.FetchAll)
+		routes.GET("/:id", handler.FetchByID)
 		routes.POST("", handler.Create)
 		routes.PUT("/:id", handler.Update)
 	}
@@ -112,5 +114,45 @@ func (handler *CustomerHandler) Update(ginContext *gin.Context) {
 	ginContext.JSON(http.StatusOK, gin.H{
 		"status": "success",
 		"data":   customerData,
+	})
+}
+
+func (handler *CustomerHandler) FetchByID(ginContext *gin.Context) {
+	// Retrieve Customer ID from URL.
+	paramID, err := strconv.ParseUint(ginContext.Param("id"), 10, 32)
+	if err != nil {
+		ginContext.JSON(http.StatusBadRequest, gin.H{"status": "fail", "error": "Invalid ID format"})
+		return
+	}
+	var customerID uint = uint(paramID)
+
+	// Pass to Usecase.
+	ctx := ginContext.Request.Context()
+	customer, err := handler.Usecase.FetchByID(ctx, customerID)
+	if err != nil {
+		ginContext.JSON(http.StatusBadRequest, gin.H{"status": "fail", "error": err.Error()})
+		return
+	}
+
+	// Return success response.
+	ginContext.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   customer,
+	})
+}
+
+func (handler *CustomerHandler) FetchAll(ginContext *gin.Context) {
+	// Pass to Usecase.
+	ctx := ginContext.Request.Context()
+	customers, err := handler.Usecase.FetchAll(ctx)
+	if err != nil {
+		ginContext.JSON(http.StatusBadRequest, gin.H{"status": "fail", "error": err.Error()})
+		return
+	}
+
+	// Return success response.
+	ginContext.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data":   customers,
 	})
 }

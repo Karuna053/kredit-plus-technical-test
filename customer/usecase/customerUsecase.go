@@ -65,3 +65,11 @@ func (usecase *customerUsecase) Update(context context.Context, reqBody *domain.
 	// Delegate the actual update process to the repository
 	return usecase.customerRepo.Update(context, &customerInput)
 }
+
+func (usecase *customerUsecase) FetchByID(context context.Context, customerID uint) (domain.Customer, error) {
+	return usecase.customerRepo.FetchByID(context, customerID)
+}
+
+func (usecase *customerUsecase) FetchAll(context context.Context) ([]domain.Customer, error) {
+	return usecase.customerRepo.FetchAll(context)
+}

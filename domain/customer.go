@@ -24,12 +24,15 @@ type Customer struct {
 type CustomerUsecase interface {
 	Create(ctx context.Context, reqBody *CustomerCreateRequest) (*Customer, error)
 	Update(ctx context.Context, reqBody *CustomerUpdateRequest, customerID uint) (*Customer, error)
+	FetchByID(ctx context.Context, customerID uint) (Customer, error)
+	FetchAll(ctx context.Context) ([]Customer, error)
 }
 
 type CustomerRepository interface {
 	Create(ctx context.Context, customerInput *Customer) (*Customer, error)
 	Update(ctx context.Context, customerInput *Customer) (*Customer, error)
 	FetchByID(ctx context.Context, customerID uint) (Customer, error)
+	FetchAll(ctx context.Context) ([]Customer, error)
 }
 
 // Validation rules for Customer Create
