@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"errors"
 	"kredit-plus/domain"
 
 	"gorm.io/gorm"
@@ -38,7 +39,7 @@ func (repo *customerRepository) FetchByID(ctx context.Context, customerID uint) 
 
 	err := repo.DB.First(&customer, "id = ?", customerID).Error
 	if err != nil {
-		return domain.Customer{}, err
+		return domain.Customer{}, errors.New("customer ID does not exist in database")
 	}
 
 	return customer, nil

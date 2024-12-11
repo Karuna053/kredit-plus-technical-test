@@ -2,10 +2,15 @@ package main
 
 import (
 	"fmt"
+	"kredit-plus/domain"
+
 	customerHandler "kredit-plus/customer/handler"
 	customerRepo "kredit-plus/customer/repository"
 	customerUsecase "kredit-plus/customer/usecase"
-	"kredit-plus/domain"
+
+	customerTenorHandler "kredit-plus/customer_tenor/handler"
+	customerTenorRepo "kredit-plus/customer_tenor/repository"
+	customerTenorUsecase "kredit-plus/customer_tenor/usecase"
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
@@ -51,9 +56,15 @@ func main() {
 	// Run Gin.
 	server := gin.Default()
 
-	repo := customerRepo.NewCustomerRepository(DB)
-	uc := customerUsecase.NewCustomerUsecase(repo)
-	customerHandler.NewCustomerHandler(server, uc)
+	// Setup customerHandler.
+	cRepo := customerRepo.NewCustomerRepository(DB)
+	cUsecase := customerUsecase.NewCustomerUsecase(cRepo)
+	customerHandler.NewCustomerHandler(server, cUsecase)
+
+	// Setup customerTenorHandler.
+	ctRepo := customerTenorRepo.NewCustomerTenorRepository(DB)
+	ctUsecase := customerTenorUsecase.NewCustomerTenorUsecase(ctRepo, cRepo)
+	customerTenorHandler.NewCustomerTenorHandler(server, ctUsecase)
 
 	server.Run(":8080")
 }
