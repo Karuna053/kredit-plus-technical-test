@@ -23,10 +23,13 @@ type Customer struct {
 
 type CustomerUsecase interface {
 	Create(ctx context.Context, reqBody *CustomerCreateRequest) (*Customer, error)
+	Update(ctx context.Context, reqBody *CustomerUpdateRequest, customerID uint) (*Customer, error)
 }
 
 type CustomerRepository interface {
 	Create(ctx context.Context, customerInput *Customer) (*Customer, error)
+	Update(ctx context.Context, customerInput *Customer) (*Customer, error)
+	FetchByID(ctx context.Context, customerID uint) (Customer, error)
 }
 
 // Validation rules for Customer Create
@@ -43,7 +46,6 @@ type CustomerCreateRequest struct {
 
 // Validation rules for Customer Update
 type CustomerUpdateRequest struct {
-	ID           uint    `json:"ID" validate:"required"`
 	NIK          string  `json:"NIK" validate:"required,max=255"`
 	FullName     string  `json:"FullName" validate:"required,max=255"`
 	LegalName    string  `json:"LegalName" validate:"required,max=255"`
