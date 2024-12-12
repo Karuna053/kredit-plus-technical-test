@@ -12,12 +12,12 @@ import (
 )
 
 var customerRepository = &mocks.CustomerRepository{Mock: mock.Mock{}}
-var customerUseCase = customerUsecase{customerRepository}
+var testCustomerUsecase = customerUsecase{customerRepository}
 
 func TestCreateSuccess(t *testing.T) {
 	customerRepository.Mock.On("Create", context.TODO(), mock.Anything).Return(&domain.Customer{}, nil)
 
-	customer, err := customerUseCase.Create(context.TODO(), &domain.CustomerCreateRequest{
+	customer, err := testCustomerUsecase.Create(context.TODO(), &domain.CustomerCreateRequest{
 		NIK:          "123456789",
 		FullName:     "Eilang Whites",
 		LegalName:    "Testing 123",
@@ -46,7 +46,7 @@ func TestUpdateSuccess(t *testing.T) {
 
 	customerRepository.Mock.On("Update", context.TODO(), mock.Anything).Return(&domain.Customer{}, nil)
 
-	customer, err := customerUseCase.Update(context.TODO(), &domain.CustomerUpdateRequest{
+	customer, err := testCustomerUsecase.Update(context.TODO(), &domain.CustomerUpdateRequest{
 		NIK:          "00000000",
 		FullName:     "Eilang Whites",
 		LegalName:    "Testing 123",
@@ -73,7 +73,7 @@ func TestFetchByIDSuccess(t *testing.T) {
 		FotoSelfie:   "http://googlefu.com",
 	}, nil)
 
-	customer, err := customerUseCase.FetchByID(context.TODO(), uint(1))
+	customer, err := testCustomerUsecase.FetchByID(context.TODO(), uint(1))
 
 	assert.Nil(t, err)
 	assert.NotNil(t, customer)
@@ -82,7 +82,7 @@ func TestFetchByIDSuccess(t *testing.T) {
 func TestFetchAllSuccess(t *testing.T) {
 	customerRepository.Mock.On("FetchAll", context.TODO()).Return([]domain.Customer{}, nil)
 
-	customers, err := customerUseCase.FetchAll(context.TODO())
+	customers, err := testCustomerUsecase.FetchAll(context.TODO())
 
 	assert.Nil(t, err)
 	assert.NotNil(t, customers)
