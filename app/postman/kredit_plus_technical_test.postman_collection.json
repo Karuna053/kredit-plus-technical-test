@@ -1,0 +1,1055 @@
+{
+	"info": {
+		"_postman_id": "bfcbe4f8-9d0c-4bd8-80a8-a76bcd59e249",
+		"name": "Kredit Plus Technical Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3064393"
+	},
+	"item": [
+		{
+			"name": "Create Customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NIK\": \"12340\",\r\n    \"FotoKTP\": \"whatsup\",\r\n    \"FotoSelfie\": \"whatsup 222\",\r\n    \"FullName\": \"Eilang Eilang\",\r\n    \"Gaji\": 1000000,\r\n    \"LegalName\": \"Kario\",\r\n    \"TanggalLahir\": \"2024-10-18\",\r\n    \"TempatLahir\": \"Let's gooo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NIK\": \"12340\",\r\n    \"FotoKTP\": \"whatsup\",\r\n    \"FotoSelfie\": \"whatsup 222\",\r\n    \"FullName\": \"Eilang Eilang\",\r\n    \"Gaji\": 1000000,\r\n    \"LegalName\": \"Kario\",\r\n    \"TanggalLahir\": \"2024-10-18\",\r\n    \"TempatLahir\": \"Let's gooo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 19:50:35 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "320"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 7,\n        \"NIK\": \"12340\",\n        \"FullName\": \"Eilang Eilang\",\n        \"LegalName\": \"Kario\",\n        \"TempatLahir\": \"Let's gooo\",\n        \"TanggalLahir\": \"2024-10-18T00:00:00Z\",\n        \"Gaji\": 1000000,\n        \"FotoKTP\": \"whatsup\",\n        \"FotoSelfie\": \"whatsup 222\",\n        \"CreatedAt\": \"2024-12-12T02:50:35.0637133+07:00\",\n        \"UpdatedAt\": \"2024-12-12T02:50:35.0637133+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Customer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"NIK\": \"12300\",\r\n    \"FotoKTP\": \"whatsup\",\r\n    \"FotoSelfie\": \"whatsup 222\",\r\n    \"FullName\": \"Eilang Eilang\",\r\n    \"Gaji\": 1000000,\r\n    \"LegalName\": \"Kario\",\r\n    \"TanggalLahir\": \"2024-10-18\",\r\n    \"TempatLahir\": \"Let's gooo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NIK\": \"12300\",\r\n    \"FotoKTP\": \"whatsup\",\r\n    \"FotoSelfie\": \"whatsup 222\",\r\n    \"FullName\": \"Eilang Eilang\",\r\n    \"Gaji\": 1000000,\r\n    \"LegalName\": \"Kario\",\r\n    \"TanggalLahir\": \"2024-10-18\",\r\n    \"TempatLahir\": \"Let's gooo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 15:37:33 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "318"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"NIK\": \"12300\",\n        \"FullName\": \"Eilang Eilang\",\n        \"LegalName\": \"Kario\",\n        \"TempatLahir\": \"Let's gooo\",\n        \"TanggalLahir\": \"2024-10-18T00:00:00Z\",\n        \"Gaji\": 1000000,\n        \"FotoKTP\": \"whatsup\",\n        \"FotoSelfie\": \"whatsup 222\",\n        \"CreatedAt\": \"2024-12-11T20:12:10.698979+07:00\",\n        \"UpdatedAt\": \"2024-12-11T22:37:22.661489+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch Customer By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 17:04:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "322"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 5,\n        \"NIK\": \"1235\",\n        \"FullName\": \"Eilang Eilang\",\n        \"LegalName\": \"Kario\",\n        \"TempatLahir\": \"Let's gooo\",\n        \"TanggalLahir\": \"2024-10-18T07:00:00+07:00\",\n        \"Gaji\": 1000000,\n        \"FotoKTP\": \"whatsup\",\n        \"FotoSelfie\": \"whatsup 222\",\n        \"CreatedAt\": \"2024-12-11T21:36:34.491581+07:00\",\n        \"UpdatedAt\": \"2024-12-11T21:36:34.491581+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch All Customers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 17:58:54 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "620"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 5,\n            \"NIK\": \"1235\",\n            \"FullName\": \"Eilang Eilang\",\n            \"LegalName\": \"Kario\",\n            \"TempatLahir\": \"Let's gooo\",\n            \"TanggalLahir\": \"2024-10-18T07:00:00+07:00\",\n            \"Gaji\": 1000000,\n            \"FotoKTP\": \"whatsup\",\n            \"FotoSelfie\": \"whatsup 222\",\n            \"CreatedAt\": \"2024-12-11T21:36:34.491581+07:00\",\n            \"UpdatedAt\": \"2024-12-11T21:36:34.491581+07:00\"\n        },\n        {\n            \"ID\": 1,\n            \"NIK\": \"12300\",\n            \"FullName\": \"Eilang Eilang\",\n            \"LegalName\": \"Kario\",\n            \"TempatLahir\": \"Let's gooo\",\n            \"TanggalLahir\": \"2024-10-18T07:00:00+07:00\",\n            \"Gaji\": 1000000,\n            \"FotoKTP\": \"whatsup\",\n            \"FotoSelfie\": \"whatsup 222\",\n            \"CreatedAt\": \"2024-12-11T20:12:10.698979+07:00\",\n            \"UpdatedAt\": \"2024-12-11T22:37:22.661489+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Customer Tenor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"Bulan\": 11,\r\n    \"Limit\": 200000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/tenor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"tenor"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"NIK\": \"1235\",\r\n    \"FotoKTP\": \"whatsup\",\r\n    \"FotoSelfie\": \"whatsup 222\",\r\n    \"FullName\": \"Eilang Eilang\",\r\n    \"Gaji\": 1000000,\r\n    \"LegalName\": \"Kario\",\r\n    \"TanggalLahir\": \"2024-10-18\",\r\n    \"TempatLahir\": \"Let's gooo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 14:36:37 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "319"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 5,\n        \"NIK\": \"1235\",\n        \"FullName\": \"Eilang Eilang\",\n        \"LegalName\": \"Kario\",\n        \"TempatLahir\": \"Let's gooo\",\n        \"TanggalLahir\": \"2024-10-18T00:00:00Z\",\n        \"Gaji\": 1000000,\n        \"FotoKTP\": \"whatsup\",\n        \"FotoSelfie\": \"whatsup 222\",\n        \"CreatedAt\": \"2024-12-11T21:36:34.4915814+07:00\",\n        \"UpdatedAt\": \"2024-12-11T21:36:34.4915814+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Customer Tenor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"Bulan\": 3,\r\n    \"Limit\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/tenor/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"tenor",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"Bulan\": 3,\r\n    \"Limit\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/tenor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"tenor",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 19:56:22 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "169"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"CustomerID\": 1,\n        \"Bulan\": 3,\n        \"Limit\": 2000,\n        \"CreatedAt\": \"2024-12-12T02:21:52.553227+07:00\",\n        \"UpdatedAt\": \"2024-12-12T02:56:22.6727015+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Customer Tenor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/tenor/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"tenor",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/tenor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"tenor",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 19:59:29 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Customer Tenor successfully deleted.\",\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch Customer Tenor By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/tenor/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"tenor",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/tenor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"tenor",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 19:57:54 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "168"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 1,\n        \"CustomerID\": 1,\n        \"Bulan\": 3,\n        \"Limit\": 2000,\n        \"CreatedAt\": \"2024-12-12T02:21:52.553227+07:00\",\n        \"UpdatedAt\": \"2024-12-12T02:56:22.672701+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch All Customer Tenors",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/customer/tenor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"customer",
+						"tenor"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customer/tenor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"tenor"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 19:58:36 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "314"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 3,\n            \"CustomerID\": 1,\n            \"Bulan\": 11,\n            \"Limit\": 200000,\n            \"CreatedAt\": \"2024-12-12T02:24:18.229545+07:00\",\n            \"UpdatedAt\": \"2024-12-12T02:24:18.229545+07:00\"\n        },\n        {\n            \"ID\": 1,\n            \"CustomerID\": 1,\n            \"Bulan\": 3,\n            \"Limit\": 2000,\n            \"CreatedAt\": \"2024-12-12T02:21:52.553227+07:00\",\n            \"UpdatedAt\": \"2024-12-12T02:56:22.672701+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"AdminFee\": 2000,\r\n    \"JumlahBunga\": 4000,\r\n    \"JumlahCicilan\": 170000,\r\n    \"NomorKontrak\": \"Hello hello\",\r\n    \"NomorOnTheRoad\": \"Hullo Hullo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaction"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"AdminFee\": 2000,\r\n    \"JumlahBunga\": 4000,\r\n    \"JumlahCicilan\": 170000,\r\n    \"NomorKontrak\": \"Hello hello\",\r\n    \"NomorOnTheRoad\": \"Hullo Hullo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 20:21:14 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "265"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 3,\n        \"CustomerID\": 1,\n        \"NomorKontrak\": \"Hello hello\",\n        \"NomorOnTheRoad\": \"Hullo Hullo\",\n        \"AdminFee\": 2000,\n        \"JumlahCicilan\": 170000,\n        \"JumlahBunga\": 4000,\n        \"CreatedAt\": \"2024-12-12T03:21:14.6975041+07:00\",\n        \"UpdatedAt\": \"2024-12-12T03:21:14.6975041+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Transaction",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"AdminFee\": 3000,\r\n    \"JumlahBunga\": 4000,\r\n    \"JumlahCicilan\": 170000,\r\n    \"NomorKontrak\": \"Hello hello\",\r\n    \"NomorOnTheRoad\": \"Hullo Hullo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transaction/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaction",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CustomerID\": 1,\r\n    \"AdminFee\": 3000,\r\n    \"JumlahBunga\": 4000,\r\n    \"JumlahCicilan\": 170000,\r\n    \"NomorKontrak\": \"Hello hello\",\r\n    \"NomorOnTheRoad\": \"Hullo Hullo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transaction/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transaction",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 20:32:47 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 3,\n        \"CustomerID\": 1,\n        \"NomorKontrak\": \"Hello hello\",\n        \"NomorOnTheRoad\": \"Hullo Hullo\",\n        \"AdminFee\": 3000,\n        \"JumlahCicilan\": 170000,\n        \"JumlahBunga\": 4000,\n        \"CreatedAt\": \"2024-12-12T03:21:14.697504+07:00\",\n        \"UpdatedAt\": \"2024-12-12T03:32:47.059866+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch Transaction By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transaction/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaction",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transaction/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transaction",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 20:33:45 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "263"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"ID\": 3,\n        \"CustomerID\": 1,\n        \"NomorKontrak\": \"Hello hello\",\n        \"NomorOnTheRoad\": \"Hullo Hullo\",\n        \"AdminFee\": 3000,\n        \"JumlahCicilan\": 170000,\n        \"JumlahBunga\": 4000,\n        \"CreatedAt\": \"2024-12-12T03:21:14.697504+07:00\",\n        \"UpdatedAt\": \"2024-12-12T03:32:47.059866+07:00\"\n    },\n    \"status\": \"success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Fetch All Transactions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transaction",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transaction"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transaction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 11 Dec 2024 20:34:07 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "499"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"ID\": 2,\n            \"CustomerID\": 1,\n            \"NomorKontrak\": \"Hello hello\",\n            \"NomorOnTheRoad\": \"Hullo Hullo\",\n            \"AdminFee\": 2000,\n            \"JumlahCicilan\": 170000,\n            \"JumlahBunga\": 4000,\n            \"CreatedAt\": \"2024-12-12T03:20:10.65732+07:00\",\n            \"UpdatedAt\": \"2024-12-12T03:20:10.65732+07:00\"\n        },\n        {\n            \"ID\": 3,\n            \"CustomerID\": 1,\n            \"NomorKontrak\": \"Hello hello\",\n            \"NomorOnTheRoad\": \"Hullo Hullo\",\n            \"AdminFee\": 3000,\n            \"JumlahCicilan\": 170000,\n            \"JumlahBunga\": 4000,\n            \"CreatedAt\": \"2024-12-12T03:21:14.697504+07:00\",\n            \"UpdatedAt\": \"2024-12-12T03:32:47.059866+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+				}
+			]
+		}
+	]
+}
