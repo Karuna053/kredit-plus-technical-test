@@ -26,7 +26,7 @@ func (repo *customerRepository) Create(ctx context.Context, customerInput *domai
 }
 
 func (repo *customerRepository) Update(ctx context.Context, customerInput *domain.Customer) (*domain.Customer, error) {
-	err := repo.DB.Save(&customerInput).Error
+	err := repo.DB.Debug().Save(&customerInput).Error
 	if err != nil {
 		return nil, err
 	}
