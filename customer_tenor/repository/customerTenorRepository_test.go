@@ -19,52 +19,42 @@ func TestCreateSuccess(t *testing.T) {
 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
 		Conn: db,
 	}), &gorm.Config{})
-	customerRepository := NewCustomerRepository(gormdb)
+	customerTenorRepository := NewCustomerTenorRepository(gormdb)
 
 	// Mocks.
 	mock.ExpectBegin()
 	mock.ExpectQuery(`INSERT INTO (.+) VALUES (.+)`).WithArgs(
-		"",
-		"",
-		"",
-		"",
-		AnyTime{},
+		0,
+		0,
 		float64(0),
-		"",
-		"",
 		AnyTime{},
 		AnyTime{},
 	).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
 	mock.ExpectCommit()
 
 	// Tries to run the Repository function.
-	newCustomer := &domain.Customer{}
-	customer, err := customerRepository.Create(context.TODO(), newCustomer)
+	newCustomerTenor := &domain.CustomerTenor{}
+	customerTenor, err := customerTenorRepository.Create(context.TODO(), newCustomerTenor)
 
 	// Assert.
 	assert.Nil(t, err)
-	assert.NotNil(t, customer)
+	assert.NotNil(t, customerTenor)
 }
 
 func TestUpdateSuccess(t *testing.T) {
 	// Initialize variables.
-	db, mock, _ := sqlmock.New()
+	db, mock, _ := sqlmock.New()                         // Create *sql.DB and mock.
 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
 		Conn: db,
 	}), &gorm.Config{})
-	customerRepository := NewCustomerRepository(gormdb)
+	customerTenorRepository := NewCustomerTenorRepository(gormdb)
 
 	// Mocks.
 	mock.ExpectBegin()
 	mock.ExpectExec(`UPDATE (.+) SET .+`).WithArgs(
-		"",
-		"",
-		"",
-		"",
-		AnyTime{},
+		0,
+		0,
 		float64(0),
-		"",
-		"",
 		AnyTime{},
 		AnyTime{},
 		1,
@@ -72,22 +62,22 @@ func TestUpdateSuccess(t *testing.T) {
 	mock.ExpectCommit()
 
 	// Tries to run the Repository function.
-	customer, err := customerRepository.Update(context.TODO(), &domain.Customer{
+	customerTenor, err := customerTenorRepository.Update(context.TODO(), &domain.CustomerTenor{
 		ID: 1, // Assign ID to the struct to force gorm to use UPDATE and not INSERT
 	})
 
-	// Asserts
+	// Assert.
 	assert.Nil(t, err)
-	assert.NotNil(t, customer)
+	assert.NotNil(t, customerTenor)
 }
 
 func TestFetchByIDSuccess(t *testing.T) {
 	// Initialize variables.
-	db, mock, _ := sqlmock.New()
+	db, mock, _ := sqlmock.New()                         // Create *sql.DB and mock.
 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
 		Conn: db,
 	}), &gorm.Config{})
-	customerRepository := NewCustomerRepository(gormdb)
+	customerTenorRepository := NewCustomerTenorRepository(gormdb)
 
 	// Mocks.
 	query := `SELECT(.*)`
@@ -97,31 +87,31 @@ func TestFetchByIDSuccess(t *testing.T) {
 	).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
 
 	// Tries to run the Repository function.
-	customer, err := customerRepository.FetchByID(context.TODO(), uint(1))
+	customerTenor, err := customerTenorRepository.FetchByID(context.TODO(), uint(1))
 
-	// Asserts
+	// Assert.
 	assert.Nil(t, err)
-	assert.NotNil(t, customer)
+	assert.NotNil(t, customerTenor)
 }
 
 func TestFetchAllSuccess(t *testing.T) {
 	// Initialize variables.
-	db, mock, _ := sqlmock.New()
+	db, mock, _ := sqlmock.New()                         // Create *sql.DB and mock.
 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
 		Conn: db,
 	}), &gorm.Config{})
-	customerRepository := NewCustomerRepository(gormdb)
+	customerTenorRepository := NewCustomerTenorRepository(gormdb)
 
 	// Mocks.
 	query := `SELECT(.*)`
 	mock.ExpectQuery(query).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
 
 	// Tries to run the Repository function.
-	customer, err := customerRepository.FetchAll(context.TODO())
+	customerTenor, err := customerTenorRepository.FetchAll(context.TODO())
 
-	// Asserts
+	// Assert.
 	assert.Nil(t, err)
-	assert.NotNil(t, customer)
+	assert.NotNil(t, customerTenor)
 }
 
 type AnyTime struct{}
