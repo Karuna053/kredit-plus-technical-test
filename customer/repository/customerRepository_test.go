@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"database/sql/driver"
 	"kredit-plus/domain"
 	"testing"
 	"time"
@@ -49,7 +50,6 @@ func TestCreate(t *testing.T) {
 
 func TestUpdate(t *testing.T) {
 	// Initialize variables.
-	timeNow := time.Now()
 	db, mock, _ := sqlmock.New()
 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
 		Conn: db,
@@ -57,44 +57,80 @@ func TestUpdate(t *testing.T) {
 
 	// Mocks.
 	mock.ExpectBegin()
-	// mock.ExpectQuery(`UPDATE (.+) SET (.+) WHERE (.+)`).WithArgs(
-	// 	"",
-	// 	"",
-	// 	"",
-	// 	"",
-	// 	timeNow,
-	// 	float64(0),
-	// 	"",
-	// 	"",
-	// 	timeNow,
-	// 	timeNow,
-	// 	1,
-	// ).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
-
-	mock.ExpectExec(`UPDATE(.*)`).WithArgs(
+	mock.ExpectExec(`UPDATE (.+) SET .+`).WithArgs(
 		"",
 		"",
 		"",
 		"",
-		timeNow,
+		AnyTime{},
 		float64(0),
 		"",
 		"",
-		timeNow,
-		timeNow,
+		AnyTime{},
+		AnyTime{},
 		1,
 	).WillReturnResult(sqlmock.NewResult(0, 1))
+	mock.ExpectCommit()
 
 	// Tries to run the Repository function.
 	customerRepository := NewCustomerRepository(gormdb)
 	customer, err := customerRepository.Update(context.TODO(), &domain.Customer{
-		TanggalLahir: timeNow,
-		CreatedAt:    timeNow,
-		UpdatedAt:    timeNow,
-		ID:           1,
+		ID: 1,
 	})
 
 	// Asserts
 	assert.Nil(t, err)
 	assert.NotNil(t, customer)
+}
+
+func TestFetchByID(t *testing.T) {
+	// Initialize variables.
+	db, mock, _ := sqlmock.New()
+	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
+		Conn: db,
+	}), &gorm.Config{})
+
+	// Mocks.
+	query := `SELECT(.*)`
+	mock.ExpectQuery(query).WithArgs(
+		uint(1),
+		1,
+	).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
+
+	// Tries to run the Repository function.
+	customerRepository := NewCustomerRepository(gormdb)
+	customer, err := customerRepository.FetchByID(context.TODO(), uint(1))
+
+	// Asserts
+	assert.Nil(t, err)
+	assert.NotNil(t, customer)
+}
+
+func TestFetchAll(t *testing.T) {
+	// Initialize variables.
+	db, mock, _ := sqlmock.New()
+	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
+		Conn: db,
+	}), &gorm.Config{})
+
+	// Mocks.
+	query := `SELECT(.*)`
+	mock.ExpectQuery(query).WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
+
+	// Tries to run the Repository function.
+	customerRepository := NewCustomerRepository(gormdb)
+	customer, err := customerRepository.FetchAll(context.TODO())
+
+	// Asserts
+	assert.Nil(t, err)
+	assert.NotNil(t, customer)
+
+}
+
+type AnyTime struct{}
+
+// Match satisfies sqlmock.Argument interface
+func (a AnyTime) Match(v driver.Value) bool {
+	_, ok := v.(time.Time)
+	return ok
 }
