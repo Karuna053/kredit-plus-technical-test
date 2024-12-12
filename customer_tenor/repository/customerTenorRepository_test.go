@@ -114,6 +114,28 @@ func TestFetchAllSuccess(t *testing.T) {
 	assert.NotNil(t, customerTenor)
 }
 
+// func TestDeleteSuccess(t *testing.T) {
+// 	// Initialize variables.
+// 	db, mock, _ := sqlmock.New()                         // Create *sql.DB and mock.
+// 	gormdb, _ := gorm.Open(postgres.New(postgres.Config{ // Create gormDB
+// 		Conn: db,
+// 	}), &gorm.Config{})
+// 	customerTenorRepository := NewCustomerTenorRepository(gormdb)
+
+// 	// Mocks.
+// 	mock.ExpectBegin()
+// 	mock.ExpectExec(`DELETE FROM (.+) WHERE id = .+`).WithArgs(
+// 		1,
+// 	).WillReturnResult(sqlmock.NewResult(0, 1))
+// 	// mock.ExpectCommit()
+
+// 	// Tries to run the Repository function.
+// 	err := customerTenorRepository.Delete(context.TODO(), &domain.CustomerTenor{})
+
+// 	// Assert.
+// 	assert.Nil(t, err)
+// }
+
 type AnyTime struct{}
 
 // Match satisfies sqlmock.Argument interface
